@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>Custom Elements</title>
+    <script src="MoneyInput.js" type="text/javascript"></script>
+    <script src="GreenSpan.js" type="text/javascript"></script>
+    <script src="TemplatedSpan.js" type="text/javascript"></script>
+
+    <script>
+        function accessShadowDom() {
+            const moneyInput = document.querySelector('money-input');
+            const shadowDom = moneyInput.shadowRoot;
+            const input = shadowDom.querySelector('input');
+            input.value = 100;
+        }
+    </script>
+
+    <style>
+        div {
+            margin: 10px 0;
+        }
+
+        span {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Custom element -->
+    <money-input data-value="42"></money-input>
+
+    <div>
+        <span>Lorem Ipsum</span>
+    </div>
+
+    <!-- Extended buildin element -->
+    <div>
+        <span is="green-span">Green Span</span>
+    </div>
+
+    <!-- Shadow dom -->
+    <div>
+        <button onclick="accessShadowDom()">Access shadom dom</button>
+    </div>
+
+    <!-- Template -->
+    <template id="span-template">
+        <b>bold content</b>
+        <i>italics content</i>
+    </template>
+
+    <div>
+        <templated-span></templated-span>
+    </div>
+
+</body>
+
+</html>
